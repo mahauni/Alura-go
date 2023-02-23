@@ -1,57 +1,27 @@
 package main
 
-import "fmt"
-
-type ContaCorrente struct {
-	titular       string
-	numeroAgencia int
-	numeroConta   int
-	saldo         float64
-}
-
-func (conta *ContaCorrente) sacar(valor float64) {
-	if conta.saldo >= valor && valor > 0 {
-		conta.saldo -= valor
-		fmt.Println("Saque realizado com sucesso")
-	} else {
-		fmt.Println("Saldo insuficiente")
-	}
-}
-
-func (conta *ContaCorrente) depositar(valor float64) {
-	if valor > 0 {
-		conta.saldo += valor
-		fmt.Println("Deposito feito com sucesso")
-	} else {
-		fmt.Println("Deposito não foi realizado")
-	}
-}
-
-func (conta *ContaCorrente) transferir(valorDaTransferencia float64, contaDestino *ContaCorrente) bool {
-	if valorDaTransferencia < conta.saldo && valorDaTransferencia > 0 {
-		conta.saldo -= valorDaTransferencia
-		contaDestino.depositar(valorDaTransferencia)
-		return true
-	} else {
-		return false
-	}
-}
+import (
+	"fmt"
+	c "projects/Alura-go/alura_OObj/contas"
+)
 
 func main() {
-	conta1 := ContaCorrente{titular: "Enrico", numeroAgencia: 1, saldo: 4.0}
-	conta2 := ContaCorrente{"Lucas", 12, 12, 69420}
+	conta1 := c.ContaCorrente{Titular: "Enrico", NumeroAgencia: 1, Saldo: 4.0}
+	conta2 := c.ContaCorrente{Titular: "Lucas", NumeroAgencia: 12, NumeroConta: 12, Saldo: 69420}
 	fmt.Println(conta1, conta2)
 
-	var conta3 *ContaCorrente
-	conta3 = new(ContaCorrente)
-	conta3.titular = "Davi"
-	conta3.saldo = 4.7
+	var conta3 *c.ContaCorrente
+	conta3 = new(c.ContaCorrente)
+	conta3.Titular = "Davi"
+	conta3.Saldo = 4.7
 
 	fmt.Println(conta3, *conta3)
 
-	conta2.sacar(420.69)
+	fmt.Println(conta2.Sacar(420.69))
 	fmt.Println(conta2)
 
-	conta1.depositar(69)
+	fmt.Println(conta1.Depositar(69))
 	fmt.Println(conta1)
+
+	fmt.Println(conta1.Transferir(69, conta3))
 }
