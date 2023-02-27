@@ -2,26 +2,49 @@ package main
 
 import (
 	"fmt"
-	c "projects/Alura-go/alura_OObj/contas"
+
+	"github.com/mahauni/Alura-go/alura_OObj/clientes"
+	c "github.com/mahauni/Alura-go/alura_OObj/contas"
 )
 
+type verificarConta interface {
+	Sacar(float64) string
+}
+
+func pagarBoleto(conta verificarConta, valorDoVoleto float64) {
+	conta.Sacar(valorDoVoleto)
+}
+
 func main() {
-	conta1 := c.ContaCorrente{Titular: "Enrico", NumeroAgencia: 1, Saldo: 4.0}
-	conta2 := c.ContaCorrente{Titular: "Lucas", NumeroAgencia: 12, NumeroConta: 12, Saldo: 69420}
-	fmt.Println(conta1, conta2)
+	cliente1 := clientes.Titular{Nome: "Lucas", CPF: "111.111.111.11", Profissao: "Desenvolvedor"}
 
-	var conta3 *c.ContaCorrente
-	conta3 = new(c.ContaCorrente)
-	conta3.Titular = "Davi"
-	conta3.Saldo = 4.7
+	conta1 := c.ContaCorrente{
+		Titular:       cliente1,
+		NumeroAgencia: 12,
+		NumeroConta:   1,
+	}
 
-	fmt.Println(conta3, *conta3)
+	conta1.Depositar(12000)
 
-	fmt.Println(conta2.Sacar(420.69))
-	fmt.Println(conta2)
+	pagarBoleto(&conta1, 420)
 
-	fmt.Println(conta1.Depositar(69))
 	fmt.Println(conta1)
+	fmt.Println(conta1.ObterSaldo())
 
-	fmt.Println(conta1.Transferir(69, conta3))
+	conta2 := c.ContaPoupanca{
+		Titular: clientes.Titular{
+			Nome:      "Davi",
+			CPF:       "122.122.122.12",
+			Profissao: "Desempregado",
+		},
+		NumeroAgencia: 69,
+		NumeroConta:   2,
+	}
+
+	conta2.Depositar(420)
+
+	pagarBoleto(&conta2, 69)
+
+	fmt.Println(conta2)
+	fmt.Println(conta2.ObterSaldo())
 }
