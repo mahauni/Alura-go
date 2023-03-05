@@ -15,21 +15,12 @@ $ cd ./Alura-go
 
 ## GO REST API
 
-# For you to run the frontend aplication you will need to have the repo in you local machine
+## GO REST API
 
-```bash
-Enter the frontend folder
-$ cd ./RestAPI-Go/frontend/
+### For you to run the frontend aplication you will need to have the repo in you local machine
 
-Install all dependencies
-$ npm install
-$ npm update
-$ npm run
-
-And then seach in your machine http://localhost:3000
-```
-
-# If you only want to run the back-end you will need to have docker in your machine running
+### To run the application you will need to have docker installed and running in your machine
+### If you only want to run only the back-end you will still need to have docker in your machine running
 ```bash
 $ cd ./RestAPI-Go/
 
@@ -38,8 +29,21 @@ $ docker-compose up
 
 After all is up, run the api
 $ go run main.go
-
-And the the output of the request will all go to the http://localhost:8000
-
-The headers to the browser you will have to look in the routers.go file
 ```
+
+##### And the the output of the request will all go to the http://localhost:8000
+
+##### The headers to the browser you will have to look in the routers.go file
+
+### To run the frontend of the application you will need to:
+```bash
+Enter the frontend folder
+$ cd ./RestAPI-Go/frontend/
+
+Install all dependencies
+$ npm install
+$ npm update
+$ npm run
+```
+
+##### And then seach in your machine http://localhost:3000 to the webpage
