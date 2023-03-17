@@ -1,4 +1,4 @@
-module github.com/guilhermeonrails/api-go-gin
+module github.com/mahauni/Alura-go/Tests-Api-Gin
 
 go 1.16
 

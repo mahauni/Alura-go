@@ -4,8 +4,8 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/guilhermeonrails/api-go-gin/database"
-	"github.com/guilhermeonrails/api-go-gin/models"
+	"github.com/mahauni/Alura-go/Tests-Api-Gin/database"
+	"github.com/mahauni/Alura-go/Tests-Api-Gin/models"
 )
 
 func ExibeTodosAlunos(c *gin.Context) {

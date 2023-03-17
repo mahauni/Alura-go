@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/guilhermeonrails/api-go-gin/database"
-	"github.com/guilhermeonrails/api-go-gin/routes"
+	"github.com/mahauni/Alura-go/Tests-Api-Gin/database"
+	"github.com/mahauni/Alura-go/Tests-Api-Gin/routes"
 )
 
 func main() {
